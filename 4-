@@ -1,0 +1,18 @@
+// 4.	Programa que crea un array de 20 elementos llamado Pares y guarde los 20 primeros números pares.
+// Mostrar por pantalla el contenido del array creado.
+
+public class Main {
+    public static void main(String[] args) {
+        int contador = 1;
+        int[] pares = new int[20];
+        for (int i = 0; i <= 19; i += 1) {
+            if (contador % 2 == 0){pares[i] = contador;}
+            else {i -= 1;}
+            contador += 1;
+        }
+        System.out.println("Elementos del array 'pares': ");
+        for (int i = 0; i <= 19; i+= 1){
+            System.out.println((i+1)+"- "+pares[i]);
+        }
+    }
+}
