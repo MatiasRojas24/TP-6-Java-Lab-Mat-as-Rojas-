@@ -1,0 +1,25 @@
+// 5.	Programa Java que guarda en un array 10 números enteros que se leen por teclado.
+// A continuación se recorre el array y calcula cuántos números son positivos, cuántos
+// negativos y cuántos ceros.
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        int cantPos = 0, cantNeg = 0, cantCeros = 0;
+        double[] nums = new double[10];
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese los números del array: ");
+        for (int i = 0; i <= 9; i += 1) {
+            System.out.print((i + 1) + "- ");
+            nums[i] = sc.nextDouble();
+        }
+        for (int i = 0; i <= 9; i += 1) {
+            if (nums[i] == 0) {cantCeros += 1;}
+            if (nums[i] > 0) {cantPos += 1;}
+            if (nums[i] < 0) {cantNeg += 1;}
+        }
+        System.out.println("Cantidad de números positivos del array: "+cantPos);
+        System.out.println("Cantidad de números negativos del array: "+cantNeg);
+        System.out.println("Cantidad de ceros en el array: "+cantCeros);
+    }
+}
