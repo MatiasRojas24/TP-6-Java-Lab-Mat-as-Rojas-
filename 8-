@@ -1,0 +1,30 @@
+// 8.	Programa Java que lea el nombre y el sueldo de 20 empleados y muestre el nombre y el sueldo del empleado que más gana.
+//Para hacerlo utilizaremos dos arrays:
+//Un array de String para los nombres de los empleados
+//Un array de tipo double para los sueldos de cada empleado.
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        int cantEmpleados = 20, posMayorSueldo = 0;
+        double mayorSueldo = 0;
+        String[] nombreEmpleados = new String[cantEmpleados];
+        double[] sueldoEmpleados = new double[cantEmpleados];
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el nombre de los empleados: ");
+        for (int i = 0; i <= cantEmpleados-1; i += 1){
+            System.out.print((i+1)+"- ");
+            nombreEmpleados[i] = sc.nextLine();
+        }
+        System.out.println("Ingrese el sueldo de los empleados: ");
+        for (int i = 0; i <= cantEmpleados-1; i += 1){
+            System.out.print(nombreEmpleados[i]+": $");
+            sueldoEmpleados[i] = sc.nextDouble();
+            if (sueldoEmpleados[i] > mayorSueldo){
+                mayorSueldo = sueldoEmpleados[i];
+                posMayorSueldo = i;
+            }
+        }
+        System.out.println("El empleado que más sueldo gana es "+nombreEmpleados[posMayorSueldo]+" con un sueldo de $"+mayorSueldo);
+    }
+}
