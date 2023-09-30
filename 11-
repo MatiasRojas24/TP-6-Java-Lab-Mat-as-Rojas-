@@ -1,0 +1,67 @@
+// 11.	 Programa Java para obtener la matriz transpuesta de una matriz.
+// Dada una matriz A su transpuesta AT se obtiene intercambiando
+// las filas por columnas y las columnas por filas.
+// La primera fila de A se convierte en la primera columna de la matriz transpuesta
+// y la segunda fila de A se convierte en la segunda columna de la matriz transpuesta.
+// Si la dimensión de la matriz A es 2 x 3 (2 filas y 3 columnas) la dimensión de su
+// matriz transpuesta será 3 x 2 (3 filas y 2 columnas).
+// En general si la matriz A se ha creado de tamaño A[filas][columnas] su matriz
+// transpuesta se debe crear de tamaño AT[columnas]filas].
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        int f, c;
+        System.out.print("Ingrese el número de filas de la matriz: ");
+        f = leerEntero();
+        System.out.print("Ingrese el número de columnas de la matriz: ");
+        c = leerEntero();
+
+        int[][] matriz1 = crearMatriz(f, c);
+
+        System.out.println("Ingrese los valores de la matriz: ");
+        llenarMatriz(matriz1);
+
+        int [][] matrizT = crearMatrizTranspuesta(matriz1);
+
+        System.out.println("La matriz es: ");
+        mostrarMatriz(matriz1);
+        System.out.println("La matriz transpuesta es: ");
+        mostrarMatriz(matrizT);
+
+    }
+    public static int leerEntero(){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        return n;
+    }
+    public static int[][] crearMatriz(int filas, int columnas){
+        int[][] matriz = new int[filas][columnas];
+        return matriz;
+    }
+    public static void llenarMatriz(int[][] matriz){
+        for (int i = 0; i < matriz.length; i += 1){
+            for (int j = 0; j < matriz[i].length; j += 1){
+                System.out.print("Elemento ["+i+"] ["+j+"]: ");
+                matriz[i][j] = leerEntero();
+            }
+        }
+    }
+    public static void mostrarMatriz(int[][] matriz){
+        for (int i = 0; i < matriz.length; i += 1){
+            for (int j = 0; j < matriz[i].length; j += 1){
+                System.out.printf("%5d", matriz[i][j]);
+            }
+            System.out.println();
+        }
+    }
+    public static int[][] crearMatrizTranspuesta(int[][] matriz){
+        int [][] matrizTranspuesta = new int[matriz[0].length][matriz.length];
+        for (int i = 0; i < matriz.length; i += 1){
+            for (int j = 0; j < matriz[i].length; j += 1){
+               matrizTranspuesta[j][i] = matriz[i][j];
+            }
+        }
+        return matrizTranspuesta;
+    }
+}
