@@ -1,0 +1,83 @@
+// 10.	 Programa Java para sumar dos matrices de número enteros.
+//A) A partir de dos matrices A y B el programa obtendrá una matriz C que
+// contendrá la suma de las dos matrices.
+//Las matrices A y B que vamos a sumar se crean dentro del programa.
+// El número de filas y columnas de A y B se introduce por teclado, así como los valores
+// que contienen.
+//La suma de dos matrices se realiza de la siguiente forma:
+//La matriz suma de dos matrices A y B se obtiene sumando los elementos de A y B
+// que se encuentran en la misma posición.
+//B) SUMA DE MATRICES EN JAVA UTILIZANDO MÉTODOS
+//
+//En esta segunda versión del programa para sumar matrices realizaremos el programa utilizando los siguientes métodos:
+//-	Un método para leer un número entero. Este método lee un número entero por teclado
+// y lo devuelve.
+//-	Un método para crear una matriz. El método recibe el número de filas y columnas y
+// crea y devuelve una matriz de ese tamaño.
+//-	Un método para llenar una matriz con números enteros. El método recibe la matriz y
+// asigna a cada elemento un valor entero que se introduce por teclado.
+//-	Un método para mostrar una matriz por pantalla. El método recibe la matriz a mostrar.
+//-	Un método que realiza la suma de dos matrices. El método recibe las dos matrices a
+// sumar y devuelve una matriz con el resultado de la suma de ambas matrices.
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        int f, c;
+        System.out.print("Ingrese el número de filas de las matrices: ");
+        f = leerEntero();
+        System.out.print("Ingrese el número de columnas de las matrices: ");
+        c = leerEntero();
+
+        int[][] matriz1 = crearMatriz(f, c);
+        int[][] matriz2 = crearMatriz(f, c);
+
+        System.out.println("Ingrese los valores de la primera matriz: ");
+        llenarMatriz(matriz1);
+        System.out.println("Ingrese los valores de la segunda matriz: ");
+        llenarMatriz(matriz2);
+
+        int[][] matriz3 = sumarMatriz(matriz1, matriz2);
+
+        System.out.println("La primera matriz es: ");
+        mostrarMatriz(matriz1);
+        System.out.println("La segunda matriz es: ");
+        mostrarMatriz(matriz2);
+        System.out.println("La suma de las matrices es: ");
+        mostrarMatriz(matriz3);
+    }
+    public static int leerEntero(){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        return n;
+    }
+    public static int[][] crearMatriz(int filas, int columnas){
+        int[][] matriz = new int[filas][columnas];
+        return matriz;
+    }
+    public static void llenarMatriz(int[][] matriz){
+        for (int i = 0; i < matriz.length; i += 1){
+            for (int j = 0; j < matriz[i].length; j += 1){
+                System.out.print("Elemento ["+i+"] ["+j+"]: ");
+                matriz[i][j] = leerEntero();
+            }
+        }
+    }
+    public static void mostrarMatriz(int[][] matriz){
+        for (int i = 0; i < matriz.length; i += 1){
+            for (int j = 0; j < matriz[i].length; j += 1){
+                System.out.printf("%5d", matriz[i][j]);
+            }
+            System.out.println();
+        }
+    }
+    public static int[][] sumarMatriz(int[][] matrizUno, int [][] matrizDos){
+        int [][] matrizSuma = crearMatriz(matrizUno.length, matrizUno[0].length);
+        for (int i = 0; i < matrizUno.length; i += 1){
+            for (int j = 0; j < matrizUno[i].length; j += 1){
+                matrizSuma[i][j] = matrizUno[i][j] + matrizDos[i][j];
+            }
+        }
+        return matrizSuma;
+    }
+}
